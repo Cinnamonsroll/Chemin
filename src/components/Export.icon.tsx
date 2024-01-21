@@ -15,20 +15,21 @@ export default function Export({ logs, name, setShowModal, setCode }: {
     setCode: (code: string) => void
 }) {
     const generateCode = () => {
-        let code = `class ${name.replace(" ", "_").toLowerCase()}(Follower):\n  def __init__(self, ctx: Context):\n       self.ctx = ctx\n\n    def follow(self):\n`;
+        let code = `[`;
         for (let log of logs) {
             switch (log.type) {
                 case 0: {
-                    code += `       self.ctx.rotate(${log.data.z})\n`
-                    code += `       self.ctx.robot.move(${log.data.x}, ${log.data.y})\n`;
+                    code += `(self.ctx.rotate, ${log.data.z}),`
+                    code += `(self.ctx.robot.move, (${log.data.x}, ${log.data.y}))`;
                     break;
                 }
                 case 1: { 
-                    code += `       self.ctx.wait(${log.data.time})\n`;
+                    code += `(self.ctx.wait, ${log.data.time})`;
                     break; 
                 }
             }
         }
+        code += "]"
         setCode(code)
         setShowModal(true)
     }

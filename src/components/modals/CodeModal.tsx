@@ -11,8 +11,8 @@ export function CodeModal({
     setShowModal: (arg: any) => void
 }) {
     const syntaxHighlight = (code: string) => {
-        const keywords = ['class', 'def'];
-const numbers = /\d+(\.\d+)?/g
+        const keywords = ['[', ']'];
+        const numbers = /\d+(\.\d+)?/g
 
         code = code.replace(
             new RegExp(keywords.join('|'), 'g'),
@@ -21,7 +21,7 @@ const numbers = /\d+(\.\d+)?/g
         code = code.replace(
             numbers,
             (match) => `<span class="number">${match}</span>`
-          );
+        );
 
         return code
     };
