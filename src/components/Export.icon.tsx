@@ -15,16 +15,16 @@ export default function Export({ logs, name, setShowModal, setCode }: {
     setCode: (code: string) => void
 }) {
     const generateCode = () => {
-        let code = `[`;
+        let code = `[\n`;
         for (let log of logs) {
             switch (log.type) {
                 case 0: {
-                    code += `(self.ctx.rotate, ${log.data.z}),\n`
-                    code += `(self.ctx.robot.move, (${log.data.x}, ${log.data.y})),\n`;
+                    code += `   (self.ctx.rotate, ${log.data.z}),\n`
+                    code += `   (self.ctx.robot.move, (${log.data.x}, ${log.data.y})),\n`;
                     break;
                 }
                 case 1: { 
-                    code += `(self.ctx.wait, ${log.data.time}),\n`;
+                    code += `   (self.ctx.wait, ${log.data.time}),\n`;
                     break; 
                 }
             }
