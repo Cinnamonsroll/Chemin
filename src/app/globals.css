@@ -18,3 +18,12 @@
 .fancy-input:focus ~ .input-text {
   @apply text-purple-600 transform bg-transparent -translate-y-7;
 }
+
+
+.keyword{
+  @apply text-[#ff7b72];
+}
+
+.number{
+  @apply text-[#6db5ca];
+}
