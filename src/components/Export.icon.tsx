@@ -19,12 +19,12 @@ export default function Export({ logs, name, setShowModal, setCode }: {
         for (let log of logs) {
             switch (log.type) {
                 case 0: {
-                    code += `(self.ctx.rotate, ${log.data.z}),`
-                    code += `(self.ctx.robot.move, (${log.data.x}, ${log.data.y}))`;
+                    code += `(self.ctx.rotate, ${log.data.z}),\n`
+                    code += `(self.ctx.robot.move, (${log.data.x}, ${log.data.y})),\n`;
                     break;
                 }
                 case 1: { 
-                    code += `(self.ctx.wait, ${log.data.time})`;
+                    code += `(self.ctx.wait, ${log.data.time}),\n`;
                     break; 
                 }
             }
